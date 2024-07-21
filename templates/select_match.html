@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select Match</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #0056b3;
+            padding: 20px 0;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        li {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin: 10px 0;
+            width: 80%;
+            max-width: 600px;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        li:hover {
+            background-color: #f1f1f1;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        a {
+            text-decoration: none;
+            color: #0056b3;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Select Match for {{ date }}</h1>
+
+    <!-- Check the date and conditionally render the links -->
+    {% if date == '2024-06-29' %}
+        <ul>
+            {% for match_id, teams in matches.items %}
+                {% if forloop.counter == 2 %}
+                    <li><a href="{% url 'match_details_view' match_id %}">{{ teams }}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% else %}
+        <!-- Default case: render all matches -->
+        <ul>
+            {% for match_id, teams in matches.items %}
+                <li><a href="{% url 'match_details_view' match_id %}">{{ teams }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>

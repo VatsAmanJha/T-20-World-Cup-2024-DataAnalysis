@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select Match Date</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #0056b3;
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #555;
+        }
+        input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #0056b3;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #004494;
+        }
+    </style>
+</head>
+<body>
+    <h1>Select Match Date</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" min="2024-06-01" max="2024-06-29" required>
+        <button type="submit">Get Match Details</button>
+    </form>
+</body>
+</html>
